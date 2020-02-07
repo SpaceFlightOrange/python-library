@@ -139,9 +139,10 @@ class NamedUserList(common.IteratorParent):
     next_url = None
     data_attribute = 'named_users'
 
-    def __init__(self, airship):
+    def __init__(self, airship, limit=None):
         self.next_url = airship.urls.get('named_user_url')
-        super(NamedUserList, self).__init__(airship, None)
+        params = {'limit': limit} if limit else {}
+        super(NamedUserList, self).__init__(airship, params)
 
 
 class NamedUserTags(ChannelTags):
